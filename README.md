@@ -2,7 +2,7 @@
 
 ColumbulaSort 是一个高性能的基数排序（Radix Sort）C++ 头文件库。单头文件，即插即用，在大多数场景下比 `std::sort` 快 2–20 倍。
 
-全部代码由 DeepSeek-V4 生成。
+全部代码由 DeepSeek-V4 生成，未经广泛验证，请慎重使用。
 
 ---
 
