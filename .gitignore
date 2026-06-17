@@ -1,0 +1,27 @@
+# Build artifacts
+*.exe
+*.obj
+*.o
+*.out
+*.ilk
+*.pdb
+
+# IDE
+.idea/
+*.suo
+*.user
+*.sln.docstates
+.vs/
+.vscode/
+
+# Temp / archives
+*.zip
+*.tar.gz
+*.7z
+
+# Test output
+test_result.txt
+
+# OS
+.DS_Store
+Thumbs.db
