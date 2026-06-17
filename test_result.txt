@@ -1,0 +1,58 @@
+ColumbulaSort 测试 — 正确性 + 性能对标
+所有代码由 DeepSeek-V4 生成
+
+=== 1. 全阈值梯度 ===
+  all pass
+
+=== 2. 全位宽性能对比（7轮中位数）===
+int [INT_MIN,INT_MAX] 10000                         [OK] r=7 Columbula=0.1        std=0.3        FAST 4.7  x
+int [INT_MIN,INT_MAX] 50000                         [OK] r=7 Columbula=0.2        std=1.8        FAST 8.6  x
+int [INT_MIN,INT_MAX] 100000                        [OK] r=7 Columbula=0.4        std=3.9        FAST 8.8  x
+int [INT_MIN,INT_MAX] 500000                        [OK] r=7 Columbula=5.7        std=22.7       FAST 4.0  x
+int [INT_MIN,INT_MAX] 1000000                       [OK] r=7 Columbula=15.4       std=45.3       FAST 2.9  x
+uint [0,UINT_MAX] 10000                             [OK] r=7 Columbula=0.1        std=0.3        FAST 5.7  x
+uint [0,UINT_MAX] 50000                             [OK] r=7 Columbula=0.2        std=1.8        FAST 8.6  x
+uint [0,UINT_MAX] 100000                            [OK] r=7 Columbula=0.5        std=3.7        FAST 8.2  x
+uint [0,UINT_MAX] 500000                            [OK] r=7 Columbula=4.0        std=20.6       FAST 5.2  x
+uint [0,UINT_MAX] 1000000                           [OK] r=7 Columbula=8.6        std=43.8       FAST 5.1  x
+ushort [0,65535] 10000                              [OK] r=7 Columbula=0.0        std=0.3        FAST 13.7 x
+ushort [0,65535] 100000                             [OK] r=7 Columbula=0.2        std=3.6        FAST 18.8 x
+ushort [0,65535] 500000                             [OK] r=7 Columbula=1.1        std=19.1       FAST 16.6 x
+ushort [0,65535] 1000000                            [OK] r=7 Columbula=2.8        std=38.4       FAST 13.7 x
+ushort [0,65535] 5000000                            [OK] r=7 Columbula=17.8       std=188.9      FAST 10.6 x
+short full 10000                                    [OK] r=7 Columbula=0.0        std=0.3        FAST 10.2 x
+short full 100000                                   [OK] r=7 Columbula=0.2        std=3.5        FAST 19.7 x
+short full 500000                                   [OK] r=7 Columbula=1.2        std=19.2       FAST 16.6 x
+short full 1000000                                  [OK] r=7 Columbula=3.3        std=37.9       FAST 11.3 x
+short full 5000000                                  [OK] r=7 Columbula=20.4       std=185.4      FAST 9.1  x
+ll full 10000                                       [OK] r=7 Columbula=0.1        std=0.3        FAST 2.4  x
+ll full 100000                                      [OK] r=7 Columbula=1.1        std=3.7        FAST 3.3  x
+ll full 500000                                      [OK] r=7 Columbula=8.0        std=21.8       FAST 2.7  x
+ll full 1000000                                     [OK] r=7 Columbula=30.0       std=45.8       FAST 1.5  x
+ull full 10000                                      [OK] r=7 Columbula=0.1        std=0.3        FAST 2.2  x
+ull full 100000                                     [OK] r=7 Columbula=1.1        std=3.6        FAST 3.2  x
+ull full 500000                                     [OK] r=7 Columbula=8.3        std=22.1       FAST 2.7  x
+ull full 1000000                                    [OK] r=7 Columbula=27.8       std=45.7       FAST 1.6  x
+float mix 10000                                     [OK] r=7 Columbula=0.1        std=0.3        FAST 4.0  x
+double mix 10000                                    [OK] r=7 Columbula=0.2        std=0.3        FAST 1.5  x
+float mix 100000                                    [OK] r=7 Columbula=0.6        std=3.9        FAST 6.2  x
+double mix 100000                                   [OK] r=7 Columbula=2.1        std=4.0        FAST 1.9  x
+float mix 500000                                    [OK] r=7 Columbula=4.0        std=21.9       FAST 5.5  x
+double mix 500000                                   [OK] r=7 Columbula=13.3       std=23.6       FAST 1.8  x
+float mix 1000000                                   [OK] r=7 Columbula=11.8       std=46.9       FAST 4.0  x
+double mix 1000000                                  [OK] r=7 Columbula=44.0       std=49.6       FAST 1.1  x
+int 1M already sorted                               [OK] r=7 Columbula=8.0        std=43.8       FAST 5.5  x
+int 1M reverse sorted                               [OK] r=7 Columbula=8.1        std=44.4       FAST 5.5  x
+int 1M constant(42)                                 [OK] r=7 Columbula=10.5       std=43.5       FAST 4.2  x
+
+=== 3. 压力测试 ===
+STRESS int 50M                                      [OK] r=5 Columbula=1224.8     std=2928.4     FAST 2.4  x
+STRESS uint 50M                                     [OK] r=5 Columbula=873.4      std=2834.5     FAST 3.2  x
+STRESS ushort 100M                                  [OK] r=5 Columbula=397.6      std=3798.6     FAST 9.6  x
+STRESS short 100M                                   [OK] r=5 Columbula=651.8      std=4895.2     FAST 7.5  x
+STRESS ll 25M                                       [OK] r=5 Columbula=1430.8     std=1588.7     FAST 1.1  x
+STRESS ull 25M                                      [OK] r=5 Columbula=1216.7     std=1997.0     FAST 1.6  x
+BIG int 250M (1GB)                                  [OK] r=3 Columbula=6421.1     std=17962.4    FAST 2.8  x
+BIG ushort 500M (1GB)                               [OK] r=3 Columbula=2422.7     std=20628.9    FAST 8.5  x
+
+===== 全部完成 =====
